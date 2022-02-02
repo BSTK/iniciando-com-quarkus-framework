@@ -45,6 +45,12 @@
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
 
+    <!-- Quarkus Resteasy Jsonb -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-jsonb</artifactId>
+    </dependency>
+
     <!-- Quarkus Junit5 -->
     <dependency>
       <groupId>io.quarkus</groupId>

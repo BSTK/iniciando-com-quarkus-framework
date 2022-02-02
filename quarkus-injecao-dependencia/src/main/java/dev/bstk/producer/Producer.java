@@ -8,7 +8,7 @@ public class Producer {
     @Produces
     @Named("converterStringInteger")
     public ConverterString<Integer> converterStringInteger() {
-        return new ConverterString<Integer>() {
+        return new ConverterString<>() {
             @Override
             public String id() {
                 return "ConverterString_Integer";
@@ -29,7 +29,7 @@ public class Producer {
     @Produces
     @Named("converterStringByte")
     public ConverterString<Byte> converterStringByte() {
-        return new ConverterString<Byte>() {
+        return new ConverterString<>() {
             @Override
             public String id() {
                 return "ConverterString_Byte";
@@ -50,7 +50,7 @@ public class Producer {
     @Produces
     @Named("converterStringArray")
     public ConverterString<String[]> converterStringArray() {
-        return new ConverterString<String[]>() {
+        return new ConverterString<>() {
             @Override
             public String id() {
                 return "ConverterString_String[]";
@@ -71,7 +71,7 @@ public class Producer {
     @Produces
     @Named("converterStringArrayHifen")
     public ConverterString<String[]> converterStringArrayHifen() {
-        return new ConverterString<String[]>() {
+        return new ConverterString<>() {
             @Override
             public String id() {
                 return "ConverterStringArrayHifen_String[]";

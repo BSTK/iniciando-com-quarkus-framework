@@ -14,9 +14,9 @@ import javax.ws.rs.core.MediaType;
 
 @RequestScoped
 @Path("/producer")
-public class ProducerResoruce {
+public class ProducerResource {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProducerResoruce.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProducerResource.class);
 
     @Inject
     @Named("converterStringByte")
