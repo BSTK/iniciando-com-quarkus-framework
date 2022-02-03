@@ -1,7 +1,6 @@
 package dev.bstk.dtos;
 
-import dev.bstk.producer.ConversorMoeda;
-import dev.bstk.producer.Moeda;
+import dev.bstk.producer.moedas.Moeda;
 
 public class Resultado {
 
@@ -9,10 +8,12 @@ public class Resultado {
     private final Moeda para;
     private final Double resultado;
 
-    public Resultado(final ConversorMoeda conversor) {
-        this.de = conversor.getDe();
-        this.para = conversor.getPara();
-        this.resultado = conversor.converter();
+    public Resultado(final Moeda de,
+                     final Moeda para,
+                     final Double resultado) {
+        this.de = de;
+        this.para = para;
+        this.resultado = resultado;
     }
 
     public Moeda getDe() {

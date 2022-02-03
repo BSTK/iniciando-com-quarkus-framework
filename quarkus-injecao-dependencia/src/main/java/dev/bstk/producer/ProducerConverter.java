@@ -3,7 +3,7 @@ package dev.bstk.producer;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 
-public class Producer {
+public class ProducerConverter {
 
     @Produces
     @Named("converterStringInteger")

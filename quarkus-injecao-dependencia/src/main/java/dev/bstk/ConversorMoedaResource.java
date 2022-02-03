@@ -1,7 +1,8 @@
 package dev.bstk;
 
 import dev.bstk.dtos.Resultado;
-import dev.bstk.producer.ConversorMoeda;
+import dev.bstk.producer.moedas.ConversorMoeda;
+import dev.bstk.producer.moedas.Moeda;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -18,27 +19,31 @@ import java.util.Arrays;
 public class ConversorMoedaResource {
 
     @Inject
-    @Named("ConversorRealDolar")
-    protected ConversorMoeda conversorRealDolar;
+    @Named("conversorReal")
+    protected ConversorMoeda conversorMoedaReal;
 
     @Inject
-    @Named("ConversorRealEuro")
-    protected ConversorMoeda conversorRealEuro;
+    @Named("conversorPeso")
+    protected ConversorMoeda conversorMoedaPeso;
 
     @Inject
-    @Named("ConversorRealPeso")
-    protected ConversorMoeda conversorRealPeso;
+    @Named("conversorDolar")
+    protected ConversorMoeda conversorMoedaDolar;
 
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response ok() {
+        var realParaEuro = new Resultado(conversorMoedaReal.de(), Moeda.EURO, conversorMoedaReal.converter(Moeda.EURO, 10.9));
+        var dolarParaEuro = new Resultado(conversorMoedaDolar.de(), Moeda.EURO, conversorMoedaDolar.converter(Moeda.EURO, 10.9));
+        var pesoParaEuro = new Resultado(conversorMoedaPeso.de(), Moeda.EURO, conversorMoedaPeso.converter(Moeda.EURO, 10.9));
+
         return Response
             .status(Response.Status.OK)
             .entity(Arrays.asList(
-                new Resultado(conversorRealDolar),
-                new Resultado(conversorRealEuro),
-                new Resultado(conversorRealPeso)
+                realParaEuro,
+                dolarParaEuro,
+                pesoParaEuro
             ))
             .build();
     }
