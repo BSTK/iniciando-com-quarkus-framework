@@ -1,12 +1,14 @@
 package dev.bstk;
 
 import dev.bstk.dtos.Resultado;
-import dev.bstk.producer.moedas.ConversorMoeda;
+import dev.bstk.producer.moedas.ConversorMoedaDolar;
+import dev.bstk.producer.moedas.ConversorMoedaPeso;
+import dev.bstk.producer.moedas.ConversorMoedaReal;
 import dev.bstk.producer.moedas.Moeda;
+import dev.bstk.producer.qualifier.Qualifiers;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,16 +21,16 @@ import java.util.Arrays;
 public class ConversorMoedaResource {
 
     @Inject
-    @Named("conversorReal")
-    protected ConversorMoeda conversorMoedaReal;
+    @Qualifiers.Real
+    protected ConversorMoedaReal conversorMoedaReal;
 
     @Inject
-    @Named("conversorPeso")
-    protected ConversorMoeda conversorMoedaPeso;
+    @Qualifiers.Peso
+    protected ConversorMoedaPeso conversorMoedaPeso;
 
     @Inject
-    @Named("conversorDolar")
-    protected ConversorMoeda conversorMoedaDolar;
+    @Qualifiers.Dolar
+    protected ConversorMoedaDolar conversorMoedaDolar;
 
 
     @GET

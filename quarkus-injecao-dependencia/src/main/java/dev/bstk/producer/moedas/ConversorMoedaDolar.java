@@ -1,7 +1,10 @@
 package dev.bstk.producer.moedas;
 
+import dev.bstk.producer.qualifier.Qualifiers;
+
 import static dev.bstk.producer.moedas.Moeda.*;
 
+@Qualifiers.Dolar
 public class ConversorMoedaDolar implements ConversorMoeda {
 
     @Override

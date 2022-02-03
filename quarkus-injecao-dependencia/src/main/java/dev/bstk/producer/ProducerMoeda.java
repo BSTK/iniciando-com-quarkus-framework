@@ -10,7 +10,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 public class ProducerMoeda {
@@ -19,8 +18,7 @@ public class ProducerMoeda {
 
     @Produces
     @Dependent
-    @Named("conversorReal")
-    public ConversorMoeda conversorReal(final InjectionPoint point) {
+    public ConversorMoedaReal conversorReal(final InjectionPoint point) {
         LOGGER.info("@Produce [ conversorReal ]");
         LOGGER.info("@InjectionPoint [ Annotated: {} ]", point.getAnnotated());
         LOGGER.info("@InjectionPoint [ Bean: {} ]", point.getBean());
@@ -33,23 +31,20 @@ public class ProducerMoeda {
 
     @Produces
     @RequestScoped
-    @Named("conversorDolar")
-    public ConversorMoeda conversorDolar() {
+    public ConversorMoedaDolar conversorDolar() {
         LOGGER.info("@Produce [ conversorDolar ]");
         return new ConversorMoedaDolar();
     }
 
     @Produces
     @ApplicationScoped
-    @Named("conversorEuro")
-    public ConversorMoeda conversorEuro() {
+    public ConversorMoedaEuro conversorEuro() {
         return new ConversorMoedaEuro();
     }
 
     @Produces
     @Singleton
-    @Named("conversorPeso")
-    public ConversorMoeda conversorPeso() {
+    public ConversorMoedaPeso conversorPeso() {
         return new ConversorMoedaPeso();
     }
 
