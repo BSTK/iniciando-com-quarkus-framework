@@ -9,6 +9,7 @@ import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
@@ -19,8 +20,14 @@ public class ProducerMoeda {
     @Produces
     @Dependent
     @Named("conversorReal")
-    public ConversorMoeda conversorReal() {
+    public ConversorMoeda conversorReal(final InjectionPoint point) {
         LOGGER.info("@Produce [ conversorReal ]");
+        LOGGER.info("@InjectionPoint [ Annotated: {} ]", point.getAnnotated());
+        LOGGER.info("@InjectionPoint [ Bean: {} ]", point.getBean());
+        LOGGER.info("@InjectionPoint [ Qualifiers: {} ]", point.getQualifiers());
+        LOGGER.info("@InjectionPoint [ Type: {}]", point.getType());
+        LOGGER.info("@InjectionPoint [ Member: {} ]", point.getMember());
+
         return new ConversorMoedaReal();
     }
 
@@ -47,7 +54,7 @@ public class ProducerMoeda {
     }
 
     public void disposeConversorMoeda(@Disposes ConversorMoeda conversorMoeda) {
-        LOGGER.warn("@Disposes [ conversorMoeda ]");
+        LOGGER.warn("@Disposes [ conversorMoeda ] = [ {} ]", conversorMoeda);
     }
 
 }
