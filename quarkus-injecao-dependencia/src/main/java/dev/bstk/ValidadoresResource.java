@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/validadores")
 public class ValidadoresResource {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ValidadoresResource.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(ValidadoresResource.class);
 
     @Inject
     @Named("ValidadorCEP")

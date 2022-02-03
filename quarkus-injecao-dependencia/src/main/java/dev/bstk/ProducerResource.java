@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/producer")
 public class ProducerResource {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProducerResource.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(ProducerResource.class);
 
     @Inject
     @Named("converterStringByte")
