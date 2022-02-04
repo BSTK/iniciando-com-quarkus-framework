@@ -16,27 +16,8 @@ public class JAXRSExceptionMapper implements ExceptionMapper<IllegalArgumentExce
             .serverError()
             .type(MediaType.APPLICATION_JSON)
             .status(Response.Status.BAD_REQUEST)
-            .entity(new ErroResponse(EXCEPTION_MENSAGEM, ex.getMessage()))
+            .entity(new JAXRSExceptionErroResponse(EXCEPTION_MENSAGEM, ex.getMessage()))
             .build();
-    }
-
-    public static class ErroResponse {
-        private final String titulo;
-        private final String descricao;
-
-        public ErroResponse(final String titulo,
-                            final String descricao) {
-            this.titulo = titulo;
-            this.descricao = descricao;
-        }
-
-        public String getTitulo() {
-            return titulo;
-        }
-
-        public String getDescricao() {
-            return descricao;
-        }
     }
 
 }
