@@ -32,7 +32,12 @@ public class AnagramaService {
     }
 
     private AnagramaResponse to(final AnagramaRequest request) {
-        return new AnagramaResponse();
+        final var anagrama = new StringBuilder(request.getNome())
+                            .reverse()
+                            .toString()
+                            .toUpperCase();
+
+        return new AnagramaResponse(anagrama);
     }
 
 }
