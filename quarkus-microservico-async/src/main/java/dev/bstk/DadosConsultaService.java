@@ -1,53 +1,44 @@
 package dev.bstk;
 
-import dev.bstk.dados.Conta;
-import dev.bstk.dados.DadosPessoais;
-import dev.bstk.dados.Saldo;
-import dev.bstk.helper.JSONHelper;
-
 import javax.enterprise.context.ApplicationScoped;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @ApplicationScoped
 public class DadosConsultaService {
 
-    public Conta conta() {
-        return JSONHelper.fixure("", Conta.class);
+    private static final Object CONTA = JSONHelper.fixure("/mocks/conta.json");
+    private static final Object SALDO = JSONHelper.fixure("/mocks/saldo.json");
+    private static final Object DADOS_PESSOAS = JSONHelper.fixure("/mocks/dados-pessoais.json");
+
+    public Object conta() { return CONTA; }
+
+    public Object saldo() {
+        return SALDO;
     }
 
-    public List<Conta> contas(final Integer quantidade) {
-        List<Conta> contas = new ArrayList<>();
-        for (int i = 0; i < quantidade; i++) {
-            contas.add(conta());
-        }
-
-        return contas;
+    public Object dadosPessoais() {
+        return DADOS_PESSOAS;
     }
 
-    public Saldo saldo() {
-        return JSONHelper.fixure("", Saldo.class);
+    public List<Object> contas(final Integer quantidade) {
+        return gerarDados(quantidade, CONTA);
     }
 
-    public List<Saldo> saldos(final Integer quantidade) {
-        List<Saldo> saldos = new ArrayList<>();
-        for (int i = 0; i < quantidade; i++) {
-            saldos.add(saldo());
-        }
-
-        return saldos;
+    public List<Object> saldos(final Integer quantidade) {
+        return gerarDados(quantidade, SALDO);
     }
 
-    public DadosPessoais dadosPessoais() {
-        return JSONHelper.fixure("", DadosPessoais.class);
+    public List<Object> dadosPessoais(final Integer quantidade) {
+        return gerarDados(quantidade, DADOS_PESSOAS);
     }
 
-    public List<DadosPessoais> dadosPessoais(final Integer quantidade) {
-        List<DadosPessoais> dadosPessoais = new ArrayList<>();
-        for (int i = 0; i < quantidade; i++) {
-            dadosPessoais.add(dadosPessoais());
-        }
-
-        return dadosPessoais;
+    private List<Object> gerarDados(final Integer quantidade, Object dado) {
+        return IntStream
+            .rangeClosed(0, quantidade)
+            .boxed()
+            .map(integer -> dado)
+            .collect(Collectors.toUnmodifiableList());
     }
 }

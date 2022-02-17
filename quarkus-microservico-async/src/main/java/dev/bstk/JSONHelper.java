@@ -1,4 +1,4 @@
-package dev.bstk.helper;
+package dev.bstk;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -12,13 +12,13 @@ public class JSONHelper {
 
     private JSONHelper() { }
 
-    public static <T> T fixure(final String pathFixture, final Class<T> clazz) {
+    public static Object fixure(final String pathFixture) {
         try {
             validarCaminhoArquivoFixtureResource(pathFixture);
             final var json = new File("src/main/resources" + pathFixture);
-            return JSON_MAPPER.readValue(json, clazz);
+            return JSON_MAPPER.readValue(json, Object.class);
         } catch (IOException ex) {
-            throw new ArquivoFixtureNaoEncontradoException("Não foi possivél localizar o json de Fixture!", ex);
+            throw new IllegalArgumentException("Não foi possivél localizar o json de Fixture!", ex);
         }
     }
 
