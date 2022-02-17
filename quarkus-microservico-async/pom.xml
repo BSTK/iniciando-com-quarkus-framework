@@ -45,6 +45,18 @@
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
 
+    <!-- Quarkus Resteasy Mutiny -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-mutiny</artifactId>
+    </dependency>
+
+    <!-- Quarkus Smallrye Context Propagation -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-context-propagation</artifactId>
+    </dependency>
+
     <!-- Quarkus Resteasy Jackson -->
     <dependency>
       <groupId>io.quarkus</groupId>
