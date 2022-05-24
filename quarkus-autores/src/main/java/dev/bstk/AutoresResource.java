@@ -6,6 +6,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 @Path("/autores")
 @Produces(MediaType.TEXT_PLAIN)
@@ -34,7 +35,9 @@ public class AutoresResource {
     @Path("/{index}")
     public Response autoresFiccaoCientifica(@PathParam("index") final int index) {
         if (index < 0 || index > autoresFiccaoCientifica.length) {
-            throw new IllegalArgumentException(String.format("Index [ %s ] inválido!", index));
+            return Response
+                .status(Status.BAD_REQUEST)
+                .build();
         }
 
         return Response
